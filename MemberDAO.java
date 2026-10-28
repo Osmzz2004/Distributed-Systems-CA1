@@ -23,7 +23,7 @@ public class MemberDAO {
 				em.close();
 			}
 			
-			public void removeEmployee(Member member) {
+			public void removeMember(Member member) {
 				EntityManager em = emf.createEntityManager();
 				em.getTransaction().begin();
 				em.remove(em.merge(member));
