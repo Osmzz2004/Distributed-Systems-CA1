@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 
 public class MemberDAO {
 	protected static EntityManagerFactory emf = 
-			Persistence.createEntityManagerFactory("mydb");
+			Persistence.createEntityManagerFactory("communityFitnessCenter");
 
 			public MemberDAO() {
 				// TODO Auto-generated constructor stub
@@ -45,7 +45,7 @@ public class MemberDAO {
 				EntityManager em = emf.createEntityManager();
 				em.getTransaction().begin();
 				List<Member> members = new ArrayList<Member>();
-				members = em.createQuery("from Member").getResultList();
+				members = em.createQuery("Select * from Member").getResultList();
 				em.getTransaction().commit();
 				em.close();
 				return members;

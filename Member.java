@@ -1,4 +1,6 @@
 package CA1;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,8 @@ public class Member {
 	private String address;
 
 	@OneToOne
-
+	private List<Payment> payments;
+	
 	public Member(String name, int phoneNumber,String fitnessGoal, String address) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -42,7 +45,6 @@ public class Member {
 	public String getFitnessGoal() {
 		return fitnessGoal;
 	}
-	
 	
 
 	public String getAddress() {

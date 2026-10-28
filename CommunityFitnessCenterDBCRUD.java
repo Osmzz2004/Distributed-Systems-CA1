@@ -17,6 +17,14 @@ import javax.ws.rs.Produces;
 
 import CA1.Member;
 
+@Path("/CommunityFitnessCenterDBCRUD")
 public class CommunityFitnessCenterDBCRUD {
 
+	@GET
+	@Path("/CommunityFitnessCenterDB/members")
+    public List<Member> getAllMembers() {
+        MemberDAO dao = new MemberDAO();
+        return dao.getAllMembers();
+	}
+	
 }
