@@ -1,4 +1,3 @@
-
 package CA1;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import javax.persistence.Persistence;
 public class MembershipPlanDAO {
 
     protected static EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("communityFitnessCenter");
+            Persistence.createEntityManagerFactory("FitnessPU");
 
     public MembershipPlanDAO() {
         // TODO Auto-generated constructor stub
@@ -44,14 +43,8 @@ public class MembershipPlanDAO {
     public List<MembershipPlan> getAllPlans() {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-
         List<MembershipPlan> plans = new ArrayList<MembershipPlan>();
-
-        plans = em.createQuery(
-                "SELECT p FROM MemebershipPlan p",
-                MembershipPlan.class
-        ).getResultList();
-
+        plans = em.createQuery("from MembershipPlan").getResultList();
         em.getTransaction().commit();
         em.close();
         return plans;

@@ -1,30 +1,24 @@
 package CA1;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "payment")
 @Entity
 public class Payment {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int paymentId;
-
     private String paymentDate;
-    double amount;
+    private double amount;
     
-	@OneToMany(fetch = FetchType.EAGER)
-	private List<Member> members = new ArrayList<Member>();
 
+    @XmlElement
 	public int getPaymentId() {
 		return paymentId;
 	}
@@ -33,6 +27,7 @@ public class Payment {
 		this.paymentId = paymentId;
 	}
 
+	@XmlElement
 	public String getPaymentDate() {
 		return paymentDate;
 	}
@@ -41,11 +36,13 @@ public class Payment {
 		this.paymentDate = paymentDate;
 	}
 
-	public List<Member> getMembers() {
-		return members;
+	@XmlElement
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setMembers(List<Member> members) {
-		this.members = members;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 }
+
